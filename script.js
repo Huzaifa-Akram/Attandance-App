@@ -285,7 +285,7 @@ function generateAttendance() {
     }
   }
 
-  // Parse special students
+  // Parse different batch code students
   specialStudentsList = [];
   if (specialInput) {
     const lines = specialInput.trim().split("\n");
@@ -334,9 +334,9 @@ function generateAttendance() {
     attendanceData += `${prefix}${formattedNum}\n`;
   });
 
-  // Add special students at the end
+  // Add different batch code students at the end
   if (specialStudentsList.length > 0) {
-    attendanceData += `\nSpecial Students:\n`;
+    attendanceData += `\nDifferent Batch Code Students:\n`;
     specialStudentsList.forEach((student) => {
       attendanceData += `${student}\n`;
     });
@@ -470,7 +470,7 @@ function exportPDF() {
     if (
       lines[i].includes("Total Present:") ||
       lines[i].includes("Attendance List:") ||
-      lines[i].includes("Special Students:")
+      lines[i].includes("Different Batch Code Students:")
     ) {
       doc.setFont("helvetica", "bold");
       doc.text(lines[i], 20, yPosition);
@@ -554,7 +554,7 @@ function exportImage() {
         "</div>";
     } else if (
       lines[i].includes("Attendance List:") ||
-      lines[i].includes("Special Students:")
+      lines[i].includes("Different Batch Code Students:")
     ) {
       html +=
         '<h3 style="color: #1e293b; margin: 20px 0 10px 0; font-size: 14px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">' +
