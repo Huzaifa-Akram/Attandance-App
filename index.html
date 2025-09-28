@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Attendance Management System</h1>
+        <p>Professional attendance tracking solution</p>
+      </div>
+
+      <div class="content">
+        <!-- Class Details Section -->
+        <div class="section">
+          <h2 class="section-title">Class Details</h2>
+          <div class="input-group">
+            <input
+              type="text"
+              id="sectionName"
+              placeholder="Section (e.g., BSCS-22 (A)-Eve)"
+              value="BSCS-22 (A)-Eve"
+            />
+            <input type="text" id="courseName" placeholder="Course Name" />
+          </div>
+          <div class="input-group">
+            <input
+              type="text"
+              id="instructorName"
+              placeholder="Instructor Name"
+            />
+            <input type="text" id="roomNumber" placeholder="Room Number" />
+          </div>
+          <div class="input-group">
+            <input type="date" id="classDate" value="" />
+            <input type="time" id="startTime" placeholder="Start Time" />
+            <input type="time" id="endTime" placeholder="End Time" />
+          </div>
+        </div>
+
+        <!-- Roll Number Configuration -->
+        <div class="section">
+          <h2 class="section-title">Roll Number Configuration</h2>
+          <div class="prefix-input">
+            <label>Default Prefix:</label>
+            <input
+              type="text"
+              id="rollPrefix"
+              placeholder="e.g., 22024119-"
+              value="22024119-"
+            />
+          </div>
+        </div>
+
+        <!-- Regular Attendance Input Section -->
+        <div class="section">
+          <h2 class="section-title">Enter Roll Numbers</h2>
+          <div class="input-controls">
+            <input
+              type="text"
+              id="rollNumberInput"
+              placeholder="Enter roll numbers separated by commas (e.g., 4, 5, 2, 6, 12)"
+            />
+            <button class="voice-btn" id="voiceBtn">
+              <span id="voiceText">Start Voice Input</span>
+            </button>
+          </div>
+          <div id="voiceStatus"></div>
+        </div>
+
+        <!-- Special Students Section -->
+        <div class="section">
+          <h2 class="section-title">Special Students (Different Prefix)</h2>
+          <div class="special-students-area">
+            <textarea
+              id="specialStudents"
+              placeholder="Enter special students with their complete roll numbers, one per line&#10;Example:&#10;21024118-045&#10;23024120-012"
+            ></textarea>
+            <p class="help-text">
+              These students will be added at the end of the attendance list
+            </p>
+          </div>
+        </div>
+
+        <button class="btn">Generate Attendance</button>
+
+        <!-- Preview Section -->
+        <div class="attendance-preview" id="preview"></div>
+
+        <!-- Copy Button -->
+        <button
+          class="copy-btn"
+          id="copyBtn"
+          title="Copy attendance to clipboard"
+          style="display: none"
+        >
+          <span class="copy-icon">⧉</span>
+          Copy to Clipboard
+        </button>
+
+        <!-- Export Buttons -->
+        <div class="export-buttons" id="exportButtons" style="display: none">
+          <button class="export-btn" onclick="exportTXT()">
+            Export as TXT
+          </button>
+          <button class="export-btn" onclick="exportPDF()">
+            Export as PDF
+          </button>
+          <button class="export-btn" onclick="exportImage()">
+            Export as Image
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Include jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Include html2canvas for image generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Main application script -->
+    <script src="script.js"></script>
+  </body>
+</html>
